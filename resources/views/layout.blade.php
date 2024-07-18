@@ -3,6 +3,8 @@
 <head>
     <title>RP Info - Teste para vaga de cargo PHP</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <style type="text/css">
         @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
   
@@ -44,6 +46,24 @@
             margin-right: 0;
         }
     </style>
+    <script>
+        $(document).ready(function(){
+            $('#valor').mask("#,##0.00", {reverse: true});
+
+            $('form').on('submit', function() {
+
+                // Remover a formatação do valor antes do envio do formulário
+                var valorFormatado = $('#valor').val();
+                var valorNumerico = valorFormatado.replace(/\,/g, '');
+                var valorNumericoFloat = parseFloat(valorNumerico);
+                if (valorNumericoFloat > 99999999.99) {
+                    alert('Valor muito alto. Por favor, insira um valor menor.');
+                    return false;
+                }
+                $('#valor').val(valorNumerico);
+            })
+        });
+    </script>
 </head>
 <body>
     

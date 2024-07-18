@@ -2,6 +2,11 @@
 
 Projeto de PHP Laravel 9 para fins de avaliação para vaga de desenvolvedor PHP
 
+## Stack utilizada
+
+**Front-end:** HTML, css, Bootstrap 4.1, javascript
+
+**Back-end:** Xampp, PHP 8, Mysql
 
 ## Instalação
 

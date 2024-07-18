@@ -41,13 +41,16 @@ Route::get('cadastrar', [AuthController::class, 'cadastrar'])->name('cadastrar')
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 
-// Route::get('registration', [AuthController::class, 'registration'])->name('register');
-
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('listaProdutos', [ProdutoController::class, 'index'])->name('listaProdutos');
-    Route::get('novoProduto', [ProdutoController::class, 'index'])->name('novoProduto');
+    Route::controller(ProdutoController::class)->group(function () {
+        Route::get('listaProdutos', 'index')->name('listaProdutos');
+        Route::get('novoProduto', 'novoProduto')->name('novoProduto');
+        Route::post('storeProduto', 'storeProduto')->name('produto.store');
+        Route::get('editarProduto/{id}', 'editarProduto')->name('editarProduto');
+        Route::put('updateProduto/{id}', 'updateProduto')->name('produto.update');
+    });
 
     Route::controller(CategoriaController::class)->group(function () {
         Route::get('listaCategorias', 'index')->name('listaCategorias');

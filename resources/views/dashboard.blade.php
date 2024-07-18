@@ -34,7 +34,7 @@
                                     </ul>
 
                                     <hr>
-                                    <a href="{{ route('novoProduto') }}" class="btn btn-primary float-left">Lista Produtos</a>
+                                    <a href="{{ route('listaProdutos') }}" class="btn btn-primary float-left">Lista Produtos</a>
                                     <a href="{{ route('novoProduto') }}" class="btn btn-primary float-right">Novo Produto</a>
                                 </div>
                             </div>

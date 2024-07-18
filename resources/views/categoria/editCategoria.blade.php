@@ -13,7 +13,7 @@
                     <h4>{{ __('Editar Categoria') }} : {{ $categoria->nome }}</h4>
                     <br>
 
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary float-right">Voltar</a>
+                    <a href="{{ route('listaCategorias') }}" class="btn btn-primary float-right">Voltar</a>
                 </div>
 
                 <div class="card-body">

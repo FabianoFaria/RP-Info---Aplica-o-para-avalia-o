@@ -17,8 +17,16 @@ return new class extends Migration
         Schema::create('produto', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('usuario_id');
-            $table->string('categoria_id');
+            $table->decimal('valor', 10, 2)->nullable();
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('categoria_id');
+            // Chaves estrangeiras
+            $table->foreign('usuario_id')->references('id')->on('usuario');
+            $table->foreign('categoria_id')->references('id')->on('categoria');
+
+            // Índices
+            $table->index('usuario_id');
+            $table->index('categoria_id');
         });
     }
 

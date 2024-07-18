@@ -30,6 +30,14 @@ class Usuario extends Authenticatable
         'senha',
     ];
 
+    /**
+     * Relacionamento: Um Usuário possui muitos Produtos.
+     */
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class, 'usuario_id');
+    }
+
     public function getAuthPassword()
     {
         return $this->senha;

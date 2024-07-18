@@ -24,6 +24,18 @@ configure o arquivo .env com as informações de banco de dados
 
 ```
 
+## Rodando o projeto
+
+Para rodar o projeto
+
+```bash
+  php artisan serve
+```
+## Acessar o Swagger
+
+{Dominio}/api/documentation#/
+
+
 ## Rodando os migrates
 
 Para rodar os migrations, tenha o .env configurado

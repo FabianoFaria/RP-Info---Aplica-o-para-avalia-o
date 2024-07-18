@@ -32,8 +32,6 @@ configure o arquivo .env
 ## Detalhes do Desafio
 
 # Desafio:
-
-# Desafio:
 Um cliente nos pediu para criar um sistema de gerenciamento de produtos. O sistema deve permitir usuários
 cadastrarem seus produtos. Um usuário só pode ter acessso aos produtos que ele cadastrou, ou seja,
 um usuário não pode ver os produtos que outro usuário cadastrou. O sistema deve ter um endpoint

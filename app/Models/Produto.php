@@ -18,6 +18,15 @@ class Produto extends Model
     ];
 
     /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'usuario_id','categoria_id',
+    ];
+
+    /**
      * Relacionamento: Produto pertence a uma Categoria.
      */
     public function categoria()

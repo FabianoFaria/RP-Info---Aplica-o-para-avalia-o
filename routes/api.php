@@ -20,4 +20,4 @@ use App\Http\Controllers\API\ProdutoController;
 // });
 
 Route::get('/produtos', [ProdutoController::class, 'index']);
-Route::get('/usuarios/{usuario}', [ProdutoController::class, 'showProdutosUsuario']);
+Route::get('/usuarios/{usuario}/produtos', [ProdutoController::class, 'showProdutosUsuario']);

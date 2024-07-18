@@ -4,7 +4,7 @@ Projeto de PHP Laravel 9 para fins de avaliação para vaga de desenvolvedor PHP
 
 ## Stack utilizada
 
-**Front-end:** HTML, css, Bootstrap 4.1, javascript
+**Front-end:** HTML, css, Bootstrap 4.1, javascript, Swagger
 
 **Back-end:** Xampp, PHP 8, Mysql
 
@@ -22,6 +22,32 @@ configure o arquivo .env
   php artisan migrate
 
 ```
+
+## Documentação da API
+
+#### Retorna lista de todos os produtos
+
+```http
+  GET /api/produtos
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+|             |            |                                     |
+
+#### Retorna lista de todos os produtos de determinado usuário
+
+```http
+  GET /api/usuarios/${usuario}/produtos
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `usuario`      | `string` | **Obrigatório**. O ID do usuário que você quer |
+
+#### add(num1, num2)
+
+Recebe id do usuário para listar os produtos.
 
 
 ## Autor

@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Usuario extends Authenticatable
 {
     // Model customizado
     public      $timestamps = false;
     protected   $table = 'usuario';
+
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.

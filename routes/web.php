@@ -27,10 +27,8 @@ Route::get('/', function()
 	if(Auth::check()){
 		//Usuário logado
 		return Redirect::to('/dashboard');
-
 	}else{
 		return Redirect::to('/login');
-		// return View::make('welcome');
 	}
 });
 

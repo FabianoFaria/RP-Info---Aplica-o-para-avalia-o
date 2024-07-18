@@ -22,8 +22,9 @@ class ProdutoController extends Controller
 
         if(Auth::check()){
 
-            // Obter os últimos cinco registros de Produto e Categoria
-            $produtos = Produto::with('categoria', 'usuario')->orderBy('id', 'desc')->get();
+            $usuario = Auth::user();
+            // Obter os Produtos que o usuário cadastrou
+            $produtos = Produto::where('usuario_id', $usuario->id)->with('categoria', 'usuario')->orderBy('id', 'desc')->get();
 
             // Passar os dados para a view
             return view('produto.index', compact('produtos'));
@@ -66,10 +67,10 @@ class ProdutoController extends Controller
 
     public function editarProduto($id)
     {
-        //TODO: Implementar permissão apenas para o usuário criador do produto para editar
-        $produto = Produto::findOrFail($id);
-        $categorias = Categoria::orderBy('id', 'desc')->get();
         $usuario = Auth::user();
+        $produto = Produto::where('usuario_id', $usuario->id)->findOrFail($id);
+        $categorias = Categoria::orderBy('id', 'desc')->get();
+        
         return view('produto.editProduto', compact('produto', 'categorias', 'usuario'));
     }
 

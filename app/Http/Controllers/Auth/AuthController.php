@@ -81,11 +81,10 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-
-            // Obter os últimos cinco registros de Produto e Categoria
-            $ultimosProdutos = Produto::orderBy('id', 'desc')->take(5)->get();
-            $ultimasCategorias = Categoria::orderBy('id', 'desc')->take(5)->get();
             $usuario = Auth::user();
+            // Obter os últimos cinco registros de Produto e Categoria
+            $ultimosProdutos = Produto::where('usuario_id', $usuario->id)->orderBy('id', 'desc')->take(5)->get();
+            $ultimasCategorias = Categoria::orderBy('id', 'desc')->take(5)->get();
 
             // Passar os dados para a view
             return view('dashboard', compact('ultimosProdutos', 'ultimasCategorias', 'usuario'));

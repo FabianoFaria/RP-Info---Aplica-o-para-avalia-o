@@ -1,0 +1,41 @@
+{
+    "info": {
+        "title": "RP Info - App de Teste",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/produtos": {
+            "get": {
+                "summary": "Obter lista de todos os produtos",
+                "operationId": "f9e884ec8f40ac8dbdf824a0fa7c8574",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos cadastrados"
+                    }
+                }
+            }
+        },
+        "/api/usuarios/{usuario}/produtos": {
+            "get": {
+                "summary": "Obter produtos cadastrados por usuário",
+                "operationId": "d0aaf90b1aa61fff5125cbdfbe11bb1c",
+                "parameters": [
+                    {
+                        "name": "usuario",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produtos do usuário"
+                    }
+                }
+            }
+        }
+    }
+}

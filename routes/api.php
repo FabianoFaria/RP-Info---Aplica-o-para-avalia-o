@@ -19,5 +19,12 @@ use App\Http\Controllers\API\ProdutoController;
 //     return $request->user();
 // });
 
+/**
+ * @OA\Tag(
+ *     name="RP Info - API",
+ *     description="RP Info - Teste para vaga de cargo PHP"
+ * )
+ */
+
 Route::get('/produtos', [ProdutoController::class, 'index']);
 Route::get('/usuarios/{usuario}/produtos', [ProdutoController::class, 'showProdutosUsuario']);

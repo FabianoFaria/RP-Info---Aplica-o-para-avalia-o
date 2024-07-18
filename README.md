@@ -19,8 +19,31 @@ configure o arquivo .env
 ```bash
   cd rp-info-app-teste
   composer install
-  php artisan migrate
 
+```
+
+## Rodando os migrates
+
+Para rodar os migrations, tenha o .env configurado
+
+```bash
+  php artisan migrate
+```
+
+## Rodando os seeds
+
+Para rodar os testes, rode o seguinte comando
+
+```bash
+  php artisan db:seed
+```
+
+## Rodando os testes
+
+Para rodar os testes, rode o seguinte comando
+
+```bash
+  php artisan test
 ```
 
 ## Documentação da API
@@ -44,8 +67,6 @@ configure o arquivo .env
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `usuario`      | `string` | **Obrigatório**. O ID do usuário que você quer |
-
-#### add(num1, num2)
 
 Recebe id do usuário para listar os produtos.
 

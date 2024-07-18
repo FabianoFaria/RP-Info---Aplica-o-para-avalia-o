@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produto extends Model
 {
+    use SoftDeletes;
 
     public      $timestamps = false;
     protected   $table = 'produto';
@@ -23,7 +25,7 @@ class Produto extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'usuario_id','categoria_id',
+        'usuario_id','categoria_id','deleted_at',
     ];
 
     /**

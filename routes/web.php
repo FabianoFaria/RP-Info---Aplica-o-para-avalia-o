@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('storeProduto', 'storeProduto')->name('produto.store');
         Route::get('editarProduto/{id}', 'editarProduto')->name('editarProduto');
         Route::put('updateProduto/{id}', 'updateProduto')->name('produto.update');
+        Route::delete('deleteProduto/{id}', 'deleteProduto')->name('deleteProduto');
     });
 
     Route::controller(CategoriaController::class)->group(function () {
@@ -56,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('store', 'store')->name('categoria.store');
         Route::get('editarCategoria/{id}', 'editCategoria')->name('editCategoria');
         Route::put('update/{id}', 'update')->name('categoria.update');
+        Route::delete('deleteCategoria/{id}', 'deleteCategoria')->name('deleteCategoria');
     });
 
     // Adicione aqui outras rotas que requerem autenticação

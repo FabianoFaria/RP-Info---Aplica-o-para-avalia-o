@@ -36,7 +36,14 @@
                                     <td>{{ $produto->nome }}</td>
                                     <td>{{ $produto->valor }}</td>
                                     <td>{{ $produto->categoria->nome }}</td>
-                                    <td><a href="{{ route('editarProduto', ['id' => $produto->id]) }}" class="btn btn-warning">Editar Produto</a></td>
+                                    <td>
+                                        <a href="{{ route('editarProduto', ['id' => $produto->id]) }}" class="btn btn-warning">Editar Produto</a>
+                                        <form action="{{ route('deleteProduto', ['id' => $produto->id]) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

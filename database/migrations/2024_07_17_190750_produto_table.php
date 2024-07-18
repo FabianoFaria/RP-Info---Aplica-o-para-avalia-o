@@ -20,6 +20,8 @@ return new class extends Migration
             $table->decimal('valor', 10, 2)->nullable();
             $table->unsignedBigInteger('usuario_id');
             $table->unsignedBigInteger('categoria_id');
+            $table->softDeletes();
+            
             // Chaves estrangeiras
             $table->foreign('usuario_id')->references('id')->on('usuario');
             $table->foreign('categoria_id')->references('id')->on('categoria');

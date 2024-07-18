@@ -68,4 +68,16 @@ class CategoriaController extends Controller
 
         return redirect()->route('listaCategorias')->with('success', 'Categoria atualizada com sucesso!');
     }
+
+    /**
+     *
+     * @return response()
+     */
+    public function deleteCategoria($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+
+        return redirect()->route('listaCategorias')->with('success', 'Categoria excluída com sucesso!');
+    }
 }

@@ -84,8 +84,8 @@ class ProdutoController extends Controller
     public function updateProduto(EdicaoProdutoRequest $request, $id)
     {
 
-        //TODO: Implementar permissão apenas para o usuário criador do produto para editar
-        $produto = Produto::findOrFail($id);
+        $usuario = Auth::user();
+        $produto = Produto::where('usuario_id', $usuario->id)->findOrFail($id);
         $produto->nome = $request->nome;
         $produto->valor = $request->valor;
         $produto->categoria_id = $request->categoria_id;
@@ -94,4 +94,16 @@ class ProdutoController extends Controller
         return redirect()->route('listaProdutos')->with('success', 'Produto atualizado com sucesso!');
     }
 
+    /**
+     *
+     * @return response()
+     */
+    public function deleteProduto($id)
+    {
+        $usuario = Auth::user();
+        $produto = Produto::where('usuario_id', $usuario->id)->findOrFail($id);
+        $produto->delete();
+    
+        return redirect()->route('listaProdutos')->with('success', 'Produto excluído com sucesso!');
+    }
 }

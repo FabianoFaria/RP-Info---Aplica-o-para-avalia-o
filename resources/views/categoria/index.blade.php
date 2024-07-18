@@ -30,7 +30,14 @@
                                 <tr>
                                     <th scope="row">{{ $categoria->id }}</th>
                                     <td>{{ $categoria->nome }}</td>
-                                    <td><a href="{{ route('editCategoria', ['id' => $categoria->id]) }}" class="btn btn-warning">Editar Categoria</a></td>
+                                    <td>
+                                        <a href="{{ route('editCategoria', ['id' => $categoria->id]) }}" class="btn btn-warning">Editar Categoria</a>
+                                        <form action="{{ route('deleteCategoria', ['id' => $categoria->id]) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">Excluir</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

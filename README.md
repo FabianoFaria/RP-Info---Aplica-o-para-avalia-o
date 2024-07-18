@@ -14,7 +14,9 @@ Clonar o projeto via linha de comando
 
 git@github.com:FabianoFaria/RP-Info---Aplica-o-para-avalia-o.git
 
-configure o arquivo .env
+faça uma copia de .env.example e renomeie para .env
+
+configure o arquivo .env com as informações de banco de dados
 
 ```bash
   cd rp-info-app-teste

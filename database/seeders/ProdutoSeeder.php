@@ -19,14 +19,14 @@ class ProdutoSeeder extends Seeder
     {
         //
         // Adição de usuarios
-        Usuario::create([
+        $usuario1 = Usuario::create([
             'nome' => 'Rafael Ficticio',
             'email' => 'rafa@examplo.com',
             'senha' => bcrypt('senha123'),
         ]);
 
         // Adicione mais usuários conforme necessário
-        Usuario::create([
+        $usuario2 = Usuario::create([
             'nome' => 'Junior Usuário',
             'email' => 'junior@examplo.com',
             'senha' => bcrypt('senha1234'),
@@ -34,11 +34,11 @@ class ProdutoSeeder extends Seeder
 
         // Adição de categorias
 
-        Categoria::create([
+        $categoria1 = Categoria::create([
             'nome' => 'Categoria extra',
         ]);
 
-        Categoria::create([
+        $categoria2 = Categoria::create([
             'nome' => 'Categoria extra 2',
         ]);
 
@@ -47,15 +47,15 @@ class ProdutoSeeder extends Seeder
         Produto::create([
             'nome' => 'Refrigerante Cola',
             'valor' => 10.00,
-            'usuario_id' => 1,
-            'categoria_id' => 1,
+            'usuario_id' => $usuario1->id,
+            'categoria_id' => $categoria1->id,
         ]);
 
         Produto::create([
             'nome' => 'Salgadinho',
             'valor' => 2.5,
-            'usuario_id' => 2,
-            'categoria_id' => 2,
+            'usuario_id' => $usuario2->id,
+            'categoria_id' => $categoria2->id,
         ]);
     }
 }

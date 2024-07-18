@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\Usuario;
+use App\Models\Produto;
+use App\Models\Categoria;
 use Hash;
-use Bcrypt;
 
 class AuthController extends Controller
 {
@@ -80,10 +81,17 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+
+            // Obter os últimos cinco registros de Produto e Categoria
+            $ultimosProdutos = Produto::orderBy('id', 'desc')->take(5)->get();
+            $ultimasCategorias = Categoria::orderBy('id', 'desc')->take(5)->get();
+            $usuario = Auth::user();
+
+            // Passar os dados para a view
+            return view('dashboard', compact('ultimosProdutos', 'ultimasCategorias', 'usuario'));
         }
   
-        return redirect("login")->withSuccess('Opps! You do not have access');
+        return redirect("login")->withSuccess('Opps! Parece que você ainda não tem acesso.');
     }
 
     /**

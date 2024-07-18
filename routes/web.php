@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +22,6 @@ use App\Http\Controllers\Auth\AuthController;
 
 
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('cadastrar', [AuthController::class, 'cadastrar'])->name('cadastrar');
-
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
-
-// Route::get('registration', [AuthController::class, 'registration'])->name('register');
-
-Route::get('dashboard', [AuthController::class, 'dashboard']); 
-
 Route::get('/', function()
 {
 	if(Auth::check()){
@@ -42,5 +33,30 @@ Route::get('/', function()
 		// return View::make('welcome');
 	}
 });
- 
+
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('cadastrar', [AuthController::class, 'cadastrar'])->name('cadastrar');
+
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+
+// Route::get('registration', [AuthController::class, 'registration'])->name('register');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('listaProdutos', [ProdutoController::class, 'index'])->name('listaProdutos');
+    Route::get('novoProduto', [ProdutoController::class, 'index'])->name('novoProduto');
+
+    Route::controller(CategoriaController::class)->group(function () {
+        Route::get('listaCategorias', 'index')->name('listaCategorias');
+        Route::get('novaCategoria', 'novaCategoria')->name('novaCategoria');
+        Route::post('store', 'store')->name('categoria.store');
+        Route::get('editarCategoria/{id}', 'editCategoria')->name('editCategoria');
+        Route::put('update/{id}', 'update')->name('categoria.update');
+    });
+
+    // Adicione aqui outras rotas que requerem autenticação
+});
 
